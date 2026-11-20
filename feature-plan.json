@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "current_feature": "ps1-encoding-fix",
+  "features": [
+    {
+      "id": "ps1-encoding-fix",
+      "title": "Fix PowerShell 5.1 UTF-8 encoding compatibility",
+      "status": "done",
+      "acceptance": [
+        "hunt.ps1 contains no em-dashes (\u2014), only ASCII dash (-)",
+        "install.ps1 contains no em-dashes (\u2014), only ASCII dash (-)",
+        "Scripts are valid UTF-8 without BOM issues on PowerShell 5.1"
+      ],
+      "implementation": [
+        "scripts/hunt.ps1",
+        "scripts/install.ps1"
+      ],
+      "tests": [
+        "tests/test_ps1_encoding.py"
+      ]
+    }
+  ],
+  "features_pending": [
+    "high-severity-prioritization-skill",
+    "subagent-pipeline"
+  ],
+  "notes": "Starting with PowerShell encoding fix as the first bounded checkpoint"
+}
