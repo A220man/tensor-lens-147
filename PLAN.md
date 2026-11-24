@@ -4,7 +4,7 @@ Each round completes one feature or repair. Future items are planned, not implem
 
 ## Current round
 
-ps1-encoding-fix
+high-severity-prioritization-skill
 
 ## Roadmap
 
@@ -20,4 +20,19 @@ Acceptance:
 Implementation: `scripts/hunt.ps1`, `scripts/install.ps1`
 
 Tests: `tests/test_ps1_encoding.py`
+
+### high-severity-prioritization-skill — High-severity prioritization methodology skill
+
+Status: done
+
+Acceptance:
+- Skill file exists at skills/high-severity-focus/SKILL.md
+- Methodology ranks surfaces by demonstrated impact (authn/authz, sensitive IDOR, impactful SSRF, RCE/injection, business-logic, exploitable stored XSS)
+- Deprioritizes weak-alone findings unless a demonstrated chain exists
+- Requires concrete evidence for High/Critical and two-account demos for access-control issues
+- Stays methodology-only: no scanning, no target payloads, no engagement identifiers; human in control
+
+Implementation: `skills/high-severity-focus/SKILL.md`
+
+Tests: `tests/test_high_severity_focus.py`
 
