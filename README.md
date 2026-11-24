@@ -1,6 +1,6 @@
-# tensor-lens-147
+# tensor-lens-147 — Ryan Vo
 
-Current version: `1.0.0`.
+Current version: `1.1.0`.
 
 > Work in progress. This checkpoint may be incomplete or fail tests. See PLAN.md and STATUS.md before use.
 
@@ -8,20 +8,24 @@ Current version: `1.0.0`.
 A Claude Code skill bundle for bug hunting and external red-team work.
 
 ## Status
-This is an initial checkpoint. The first bounded implementation addresses PowerShell 5.1 UTF-8 encoding compatibility.
+This is an initial checkpoint. Completed bounded features so far:
 
-## PowerShell 5.1 UTF-8 Fix
-**Problem:** Scripts `scripts/hunt.ps1` and `scripts/install.ps1` were using em-dashes (—),
-which on Windows PowerShell 5.1 decode incorrectly when the file is UTF-8 without BOM,
-causing parsing errors like: `Token ')' inesperado na expressão ou instrução`.
+- **PowerShell 5.1 UTF-8 fix** — `scripts/hunt.ps1` and `scripts/install.ps1` use
+  ASCII dashes so they parse under Windows PowerShell 5.1 (which decodes BOM-less
+  UTF-8 using the system ANSI code page). Verified by `tests/test_ps1_encoding.py`.
+- **high-severity-focus skill** — a methodology-only skill for ranking authorized
+  testing surfaces and findings by demonstrated security impact. Verified by
+  `tests/test_high_severity_focus.py`.
 
-**Fix:** Replaced all em-dashes (—) with ASCII dashes (-) in the .ps1 source files.
-This ensures the scripts parse correctly on PowerShell 5.1 regardless of the system
-ANSI code page setting.
-
-**Affected files:**
-- `scripts/hunt.ps1` - em-dashes replaced with ASCII dashes
-- `scripts/install.ps1` - em-dashes replaced with ASCII dashes
+## high-severity-focus skill
+`skills/high-severity-focus/SKILL.md` prioritizes, in order: authentication /
+authorization failures, sensitive IDOR, impactful SSRF, RCE/injection,
+meaningful business-logic flaws, and exploitable stored XSS. It deprioritizes
+weak-alone findings unless a concrete chain to higher impact is demonstrated,
+requires concrete evidence for High/Critical claims, and prefers two-account
+demonstrations for access-control issues. It is **methodology only**: no
+autonomous scanning, no fuzzing, no target payloads, no engagement identifiers.
+The human stays in control.
 
 ## Installation
 ```bash
@@ -32,7 +36,8 @@ ANSI code page setting.
 
 ## Development
 - See `feature-plan.json` for the planned feature roadmap
-- Tests are in `tests/test_ps1_encoding.py`
-- Next features: high-severity-prioritization-skill, subagent-pipeline
+- Tests are in `tests/`
+- Run tests: `python3 -m pytest tests/ -q`
+- Next feature: subagent-pipeline (planned)
 
 Maintainer: Ryan Vo <ryandtvo@gmail.com>

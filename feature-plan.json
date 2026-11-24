@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "current_feature": "ps1-encoding-fix",
+  "current_feature": "high-severity-prioritization-skill",
   "features": [
     {
       "id": "ps1-encoding-fix",
@@ -18,11 +18,28 @@
       "tests": [
         "tests/test_ps1_encoding.py"
       ]
+    },
+    {
+      "id": "high-severity-prioritization-skill",
+      "title": "High-severity prioritization methodology skill",
+      "status": "done",
+      "acceptance": [
+        "Skill file exists at skills/high-severity-focus/SKILL.md",
+        "Methodology ranks surfaces by demonstrated impact (authn/authz, sensitive IDOR, impactful SSRF, RCE/injection, business-logic, exploitable stored XSS)",
+        "Deprioritizes weak-alone findings unless a demonstrated chain exists",
+        "Requires concrete evidence for High/Critical and two-account demos for access-control issues",
+        "Stays methodology-only: no scanning, no target payloads, no engagement identifiers; human in control"
+      ],
+      "implementation": [
+        "skills/high-severity-focus/SKILL.md"
+      ],
+      "tests": [
+        "tests/test_high_severity_focus.py"
+      ]
     }
   ],
   "features_pending": [
-    "high-severity-prioritization-skill",
     "subagent-pipeline"
   ],
-  "notes": "Starting with PowerShell encoding fix as the first bounded checkpoint"
+  "notes": "Completed ps1-encoding-fix and high-severity-prioritization-skill. Next: subagent-pipeline (larger; needs design for recon-ranker/hunter/validator subagents and harness)."
 }
