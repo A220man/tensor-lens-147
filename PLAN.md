@@ -4,7 +4,7 @@ Each round completes one feature or repair. Future items are planned, not implem
 
 ## Current round
 
-high-severity-prioritization-skill
+prioritize-command
 
 ## Roadmap
 
@@ -35,4 +35,18 @@ Acceptance:
 Implementation: `skills/high-severity-focus/SKILL.md`
 
 Tests: `tests/test_high_severity_focus.py`
+
+### prioritize-command — /prioritize command for high-severity-focus skill
+
+Status: done
+
+Acceptance:
+- Command doc exists at commands/prioritize.md
+- Delegates to high-severity-focus skill and applies its prioritization order
+- Methodology only: no scanning/payloads; human in control; scope confirmation required
+- Contains no secrets or engagement identifiers
+
+Implementation: `commands/prioritize.md`
+
+Tests: `tests/test_prioritize_command.py`
 
