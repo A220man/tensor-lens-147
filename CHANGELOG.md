@@ -1,8 +1,20 @@
 # Changelog
 
+## 1.2.0 — work-in-progress checkpoint
+
+Partial code published for continued development. Known issues: STATUS.md.
+
 ## 1.1.0 — work-in-progress checkpoint
 
 Partial code published for continued development. Known issues: STATUS.md.
+
+### Added
+
+- `commands/prioritize.md` — `/prioritize` command that operationalizes the
+  `high-severity-focus` skill (scope confirmation, prioritization order,
+  evidence bars, ranked output; methodology only).
+- `tests/test_prioritize_command.py` — verifies command structure, skill
+  delegation, guardrails, and absence of secrets.
 
 ## 1.0.0 — work-in-progress checkpoint
 

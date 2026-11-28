@@ -1,14 +1,14 @@
 {
   "schema_version": 1,
-  "current_feature": "high-severity-prioritization-skill",
+  "current_feature": "prioritize-command",
   "features": [
     {
       "id": "ps1-encoding-fix",
       "title": "Fix PowerShell 5.1 UTF-8 encoding compatibility",
       "status": "done",
       "acceptance": [
-        "hunt.ps1 contains no em-dashes (\u2014), only ASCII dash (-)",
-        "install.ps1 contains no em-dashes (\u2014), only ASCII dash (-)",
+        "hunt.ps1 contains no em-dashes (—), only ASCII dash (-)",
+        "install.ps1 contains no em-dashes (—), only ASCII dash (-)",
         "Scripts are valid UTF-8 without BOM issues on PowerShell 5.1"
       ],
       "implementation": [
@@ -36,10 +36,27 @@
       "tests": [
         "tests/test_high_severity_focus.py"
       ]
+    },
+    {
+      "id": "prioritize-command",
+      "title": "/prioritize command for high-severity-focus skill",
+      "status": "done",
+      "acceptance": [
+        "Command doc exists at commands/prioritize.md",
+        "Delegates to high-severity-focus skill and applies its prioritization order",
+        "Methodology only: no scanning/payloads; human in control; scope confirmation required",
+        "Contains no secrets or engagement identifiers"
+      ],
+      "implementation": [
+        "commands/prioritize.md"
+      ],
+      "tests": [
+        "tests/test_prioritize_command.py"
+      ]
     }
   ],
   "features_pending": [
     "subagent-pipeline"
   ],
-  "notes": "Completed ps1-encoding-fix and high-severity-prioritization-skill. Next: subagent-pipeline (larger; needs design for recon-ranker/hunter/validator subagents and harness)."
+  "notes": "Completed ps1-encoding-fix, high-severity-prioritization-skill, prioritize-command. Next: subagent-pipeline (larger; needs design for recon-ranker/hunter/validator subagents and harness)."
 }

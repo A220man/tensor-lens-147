@@ -1,6 +1,6 @@
 # tensor-lens-147 — Ryan Vo
 
-Current version: `1.1.0`.
+Current version: `1.2.0`.
 
 > Work in progress. This checkpoint may be incomplete or fail tests. See PLAN.md and STATUS.md before use.
 
@@ -16,6 +16,10 @@ This is an initial checkpoint. Completed bounded features so far:
 - **high-severity-focus skill** — a methodology-only skill for ranking authorized
   testing surfaces and findings by demonstrated security impact. Verified by
   `tests/test_high_severity_focus.py`.
+- **/prioritize command** — `commands/prioritize.md` operationalizes the skill:
+  confirms scope, applies the prioritization order, applies evidence bars, and
+  emits a ranked list. Methodology only. Verified by
+  `tests/test_prioritize_command.py`.
 
 ## high-severity-focus skill
 `skills/high-severity-focus/SKILL.md` prioritizes, in order: authentication /
